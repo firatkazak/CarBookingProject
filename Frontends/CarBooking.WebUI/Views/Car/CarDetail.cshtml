@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "CarDetail";
+    Layout = "~/Views/UILayout/Index.cshtml";
+}
+
+<section class="ftco-section ftco-car-details">
+    <div class="container">
+        @await Component.InvokeAsync("_CarDetailMainCarFeaturePartialComponent", new { id = ViewBag.carid })
+        <div class="row">
+            <div class="col-md-12 pills">
+                <div class="bd-example bd-example-tabs">
+                    @await Component.InvokeAsync("_CarDetailTabPanePartialComponent")
+                    <div class="tab-content" id="pills-tabContent">
+                        @await Component.InvokeAsync("_CarDetailCarFeatureByCarIdPartialComponent", new { id = ViewBag.carid })
+                        @await Component.InvokeAsync("_CarDetailCarDescriptionByCarIdPartialComponent", new { id = ViewBag.carid })
+                        @await Component.InvokeAsync("_CarDetailCommentsByCarIdPartialComponent", new { id = ViewBag.carid })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
